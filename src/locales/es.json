@@ -1,0 +1,6 @@
+{
+  "greeting": "¡Hola, esta es una aplicación de prueba!",
+  "toggleTheme": "Cambiar al tema {theme}",
+  "light": "claro",
+  "dark": "oscuro"
+}

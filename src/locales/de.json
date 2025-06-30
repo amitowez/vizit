@@ -1,0 +1,6 @@
+{
+  "greeting": "Hallo, dies ist eine Testanwendung!",
+  "toggleTheme": "Zum {theme} Thema wechseln",
+  "light": "hell",
+  "dark": "dunkel"
+}
