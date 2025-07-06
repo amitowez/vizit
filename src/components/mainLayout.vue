@@ -19,32 +19,17 @@
           </div>
         </div>
 
-        <v-switch
-          class="header-theme"
-          v-model="isDark"
-          :label="
-            $t('themeToggle', {
-              theme: isDark ? $t('light') : $t('dark'),
-            })
-          "
-          color="primary"
-          @update:modelValue="toggleTheme"
-        ></v-switch>
+        <changeTheme />
 
-        <appBurger />
+        <appBurger class="burger" :languages="languages" />
       </v-app-bar>
     </header>
 
-    <!-- Основной контент -->
     <v-main>
-      <!-- <v-container> -->
       <router-view />
-      <!-- </v-container> -->
     </v-main>
-
-    <!-- Семантический футер -->
     <footer>
-      <v-footer app>
+      <v-footer>
         <v-col class="text-center" cols="12">
           {{ $t("footerText") }} © {{ new Date().getFullYear() }}
         </v-col>
@@ -54,25 +39,9 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useTheme } from "vuetify";
 import appBurger from "./header/appBurger.vue";
+import changeTheme from "./header/changeTheme.vue";
 
-// Управление темой
-const theme = useTheme();
-const isDark = computed(() => theme.global.name.value === "dark");
-
-const toggleTheme = () => {
-  theme.global.name.value = isDark.value ? "light" : "dark";
-  localStorage.setItem("theme", theme.global.name.value);
-};
-
-// Восстановление темы из localStorage
-if (localStorage.getItem("theme")) {
-  theme.global.name.value = localStorage.getItem("theme");
-}
-
-// Список языков
 const languages = [
   { title: "ру", value: "ru" },
   { title: "en", value: "en" },
@@ -80,15 +49,6 @@ const languages = [
   { title: "de", value: "de" },
 ];
 </script>
-
-<!-- <style scoped>
-header {
-  background-color: v-bind("theme.current.value.colors.background");
-}
-footer {
-  background-color: v-bind("theme.current.value.colors.background");
-}
-</style> -->
 
 <style lang="scss">
 .header {
@@ -102,6 +62,12 @@ footer {
   }
   &-theme {
     height: 60px;
+  }
+}
+.burger {
+  display: none;
+  @media (max-width: 500px) {
+    display: block;
   }
 }
 

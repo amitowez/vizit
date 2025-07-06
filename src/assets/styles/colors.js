@@ -3,7 +3,8 @@ function kebabize(str) {
 }
 
 const colors = {
-  activeLang: ["#007bff", "#c62828"],
+  activeLang: ["#ffff00", "#007bff"],
+  themeIcon: ["#ffff00", "#007bff"],
 };
 
 const dark = {};
