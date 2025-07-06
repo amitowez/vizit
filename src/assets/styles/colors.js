@@ -4,6 +4,9 @@ function kebabize(str) {
 
 const colors = {
   activeLang: ["#ffff00", "#007bff"],
+  textHeader: ["#ffff00", "#007bff"],
+  textParagraph: ["#ffff00", "#007bff"],
+  textSpan: ["#ffff00", "#007bff"],
   themeIcon: ["#ffff00", "#007bff"],
 };
 
