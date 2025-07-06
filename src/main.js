@@ -10,10 +10,10 @@ import * as directives from "vuetify/directives";
 import getColors from "./assets/styles/colors";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun, faMoon, faBars } from "@fortawesome/free-solid-svg-icons";
 
 const darkThemePreferred = window.matchMedia("(prefers-color-scheme: dark)");
-library.add(faSun, faMoon);
+library.add(faSun, faMoon, faBars);
 const vuetify = createVuetify({
   components,
   directives,
@@ -45,6 +45,7 @@ const vuetify = createVuetify({
     aliases: {
       sun: "fa-sun",
       moon: "fa-moon",
+      bars: "fa-bars",
     },
     sets: {
       fa: {

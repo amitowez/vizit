@@ -28,3 +28,17 @@ h5,
 h6 {
   font-family: "Playfair Display", sans-serif;
 }
+
+.mobile {
+  display: none;
+  @media (max-width: 500px) {
+    display: block;
+  }
+}
+
+.no-mobile {
+  display: block;
+  @media (max-width: 500px) {
+    display: none;
+  }
+}

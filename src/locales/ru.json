@@ -3,5 +3,8 @@
   "toggleTheme": "Переключить на {theme} тему",
   "light": "светлую",
   "dark": "тёмную",
-  "appTitle": "туст"
+  "appTitle": "туст",
+  "about": "О нас",
+  "repertoire": "Афиша",
+  "contact": "Контакты"
 }
