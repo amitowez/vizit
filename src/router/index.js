@@ -12,6 +12,10 @@ const routes = [
     name: "repertoire",
     component: repertoirePage,
   },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
+  },
 ];
 
 const router = createRouter({
