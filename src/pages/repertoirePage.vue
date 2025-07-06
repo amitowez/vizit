@@ -1,14 +1,36 @@
 <template>
   <div class="repertoire">
     <div class="repertoire__background">
-      <img :src="currentBackground" alt="Concert background" />
+      <!-- <img :src="currentBackground" alt="Concert background" /> -->
+      <picture>
+        <!-- пример: для экранов шириной больше 1200px можно подключить другой фон -->
+        <source
+          :srcset="selectedConcert.backgroundMobile || currentBackground"
+          media="(max-width: 500px)"
+        />
+        <img :src="currentBackground" alt="Concert background" />
+      </picture>
     </div>
 
     <div class="repertoire__content">
       <div class="repertoire__left">
-        <div class="repertoire__concert-image">
-          <img :src="selectedConcert.image" alt="Concert image" />
-        </div>
+        <!-- <img
+          :src="selectedConcert.image"
+          class="repertoire__concert-image"
+          alt="Concert image"
+        /> -->
+        <picture>
+          <!-- пример: для retina или больших экранов можно подгрузить другое изображение -->
+          <source
+            :srcset="selectedConcert.imageMobile || selectedConcert.image"
+            media="(max-width: 500px)"
+          />
+          <img
+            :src="selectedConcert.image"
+            class="repertoire__concert-image"
+            alt="Concert image"
+          />
+        </picture>
         <div class="repertoire__descr">
           <span>{{ selectedConcert.title }}</span>
           <p>{{ selectedConcert.description }}</p>
@@ -39,23 +61,32 @@ const concerts = ref([
   {
     id: 1,
     title: "Музыка королей",
-    description: "Описание концерта №1",
+    description:
+      "Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: musicians,
+    imageMobile: require("@/assets/img/musicians.jpg"),
   },
   {
     id: 2,
     title: "Мадригалы",
-    description: "Описание концерта №2",
+    description:
+      "Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: cardsharps,
+    imageMobile: require("@/assets/img/cardsharps.jpg"),
   },
   {
     id: 3,
     title: "Эрос",
-    description: "Описание концерта №3",
+    description:
+      "Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: venusVertical,
+    imageMobile: require("@/assets/img/venusVertical.jpg"),
   },
 ]);
 
@@ -91,37 +122,42 @@ function selectConcert(concert) {
   &__content {
     position: absolute;
     top: 0;
+    bottom: 0;
     left: 0;
+    right: 0;
     display: flex;
     width: 100%;
-    height: 100%;
     z-index: 2;
     color: white;
   }
 
   &__left {
+    position: relative;
     width: 60%;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 10px 40px 10px;
   }
 
   &__concert-image {
-    img {
-      max-width: 100%;
-      max-height: 50vh;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
+    max-height: 75vh;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }
 
   &__descr {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    justify-content: space-between;
+    width: 75%;
+    height: 30%;
     padding: 16px;
 
     font-size: 14px;
