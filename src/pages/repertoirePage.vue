@@ -1,16 +1,36 @@
 <template>
   <div class="repertoire">
     <div class="repertoire__background">
-      <img :src="currentBackground" alt="Concert background" />
+      <!-- <img :src="currentBackground" alt="Concert background" /> -->
+      <picture>
+        <!-- пример: для экранов шириной больше 1200px можно подключить другой фон -->
+        <source
+          :srcset="selectedConcert.backgroundMobile || currentBackground"
+          media="(max-width: 500px)"
+        />
+        <img :src="currentBackground" alt="Concert background" />
+      </picture>
     </div>
 
     <div class="repertoire__content">
       <div class="repertoire__left">
-        <img
+        <!-- <img
           :src="selectedConcert.image"
           class="repertoire__concert-image"
           alt="Concert image"
-        />
+        /> -->
+        <picture>
+          <!-- пример: для retina или больших экранов можно подгрузить другое изображение -->
+          <source
+            :srcset="selectedConcert.imageMobile || selectedConcert.image"
+            media="(max-width: 500px)"
+          />
+          <img
+            :src="selectedConcert.image"
+            class="repertoire__concert-image"
+            alt="Concert image"
+          />
+        </picture>
         <div class="repertoire__descr">
           <span>{{ selectedConcert.title }}</span>
           <p>{{ selectedConcert.description }}</p>
@@ -44,7 +64,9 @@ const concerts = ref([
     description:
       "Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: musicians,
+    imageMobile: require("@/assets/img/musicians.jpg"),
   },
   {
     id: 2,
@@ -52,7 +74,9 @@ const concerts = ref([
     description:
       "Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: cardsharps,
+    imageMobile: require("@/assets/img/cardsharps.jpg"),
   },
   {
     id: 3,
@@ -60,7 +84,9 @@ const concerts = ref([
     description:
       "Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта",
     background: bg1,
+    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: venusVertical,
+    imageMobile: require("@/assets/img/venusVertical.jpg"),
   },
 ]);
 
@@ -115,7 +141,7 @@ function selectConcert(concert) {
   }
 
   &__concert-image {
-    max-height: 100%;
+    max-height: 75vh;
     border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   }

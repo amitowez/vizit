@@ -14,11 +14,17 @@
         <div class="cards-menu__item-title">
           {{ concert.title }}
         </div>
-        <img
-          class="cards-menu__item-image"
-          :src="concert.image"
-          alt="Concert image"
-        />
+        <picture>
+          <source
+            :srcset="concert.imageMobile || concert.image"
+            media="(max-width: 500px)"
+          />
+          <img
+            class="cards-menu__item-image"
+            :src="concert.image"
+            alt="Concert image"
+          />
+        </picture>
       </li>
     </ul>
     <div class="cards-menu__controls">
