@@ -35,9 +35,9 @@
 
     <!-- Основной контент -->
     <v-main>
-      <v-container>
-        <router-view />
-      </v-container>
+      <!-- <v-container> -->
+      <router-view />
+      <!-- </v-container> -->
     </v-main>
 
     <!-- Семантический футер -->
