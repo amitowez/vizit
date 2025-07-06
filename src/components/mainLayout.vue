@@ -3,8 +3,21 @@
     <!-- Семантический хедер -->
     <header>
       <v-app-bar app>
-        <v-toolbar-title>{{ $t("appTitle") }}</v-toolbar-title>
+        <v-toolbar-title @click="$router.push('/repertoire')">{{
+          $t("appTitle")
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
+        <div class="header-nav">
+          <router-link
+            v-for="item in navigation"
+            :to="item.value"
+            :key="item.label"
+            class="nav-element"
+          >
+            {{ $t(item.label) }}
+          </router-link>
+        </div>
+
         <div class="header-lang">
           <div
             class="header-lang-item"
@@ -16,33 +29,23 @@
             {{ lang.title }}
           </div>
         </div>
+        <div class="no-mobile">
+          <changeTheme />
+        </div>
 
-        <v-switch
-          class="header-theme"
-          v-model="isDark"
-          :label="
-            $t('themeToggle', {
-              theme: isDark ? $t('light') : $t('dark'),
-            })
-          "
-          color="primary"
-          @update:modelValue="toggleTheme"
-        ></v-switch>
-
-        <appBurger />
+        <appBurger
+          class="burger mobile"
+          :languages="languages"
+          :navigation="navigation"
+        />
       </v-app-bar>
     </header>
 
-    <!-- Основной контент -->
     <v-main>
-      <v-container>
-        <router-view />
-      </v-container>
+      <router-view />
     </v-main>
-
-    <!-- Семантический футер -->
     <footer>
-      <v-footer app>
+      <v-footer>
         <v-col class="text-center" cols="12">
           {{ $t("footerText") }} © {{ new Date().getFullYear() }}
         </v-col>
@@ -52,57 +55,62 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-import { useTheme } from "vuetify";
 import appBurger from "./header/appBurger.vue";
+import changeTheme from "./header/changeTheme.vue";
 
-// Управление темой
-const theme = useTheme();
-const isDark = computed(() => theme.global.name.value === "dark");
-
-const toggleTheme = () => {
-  theme.global.name.value = isDark.value ? "light" : "dark";
-  localStorage.setItem("theme", theme.global.name.value);
-};
-
-// Восстановление темы из localStorage
-if (localStorage.getItem("theme")) {
-  theme.global.name.value = localStorage.getItem("theme");
-}
-
-// Список языков
 const languages = [
   { title: "ру", value: "ru" },
   { title: "en", value: "en" },
   { title: "es", value: "es" },
   { title: "de", value: "de" },
 ];
-</script>
 
-<!-- <style scoped>
-header {
-  background-color: v-bind("theme.current.value.colors.background");
-}
-footer {
-  background-color: v-bind("theme.current.value.colors.background");
-}
-</style> -->
+const navigation = [
+  { label: "about", value: "about" },
+  { label: "repertoire", value: "repertoire" },
+  { label: "contact", value: "contact" },
+];
+</script>
 
 <style lang="scss">
 .header {
   &-lang {
     display: flex;
+    @media (max-width: 500px) {
+      display: none;
+    }
     &-item {
       cursor: pointer;
       height: 30px;
       margin: 0 10px;
     }
   }
+  &-nav {
+    @media (max-width: 500px) {
+      display: none;
+    }
+  }
   &-theme {
     height: 60px;
   }
 }
-
+.burger {
+  width: 50px;
+  height: 50px;
+}
+.nav-element {
+  margin: 0px 20px;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  outline: none;
+  transition: none;
+  font-size: 20px;
+  &:hover {
+    color: rgb(var(--v-theme-active-lang));
+    transition: 300ms;
+  }
+}
 .active {
   color: rgb(var(--v-theme-active-lang));
 }
