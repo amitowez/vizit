@@ -3,7 +3,9 @@
     <!-- Семантический хедер -->
     <header>
       <v-app-bar app>
-        <v-toolbar-title>{{ $t("appTitle") }}</v-toolbar-title>
+        <v-toolbar-title @click="$router.push('/repertoire')">{{
+          $t("appTitle")
+        }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="header-lang">
           <div
