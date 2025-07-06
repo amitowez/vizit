@@ -35,15 +35,18 @@
   justify-content: center;
 
   &-1 {
-    background: url("@/assets/bg1.jpg") center center / cover no-repeat fixed;
+    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
+      fixed;
   }
 
   &-2 {
-    background: url("@/assets/bg2.jpg") center center / cover no-repeat fixed;
+    background: url("@/assets/img/bg2.jpg") center center / cover no-repeat
+      fixed;
   }
 
   &-3 {
-    background: url("@/assets/bg3.jpg") center center / cover no-repeat fixed;
+    background: url("@/assets/img/bg3.jpg") center center / cover no-repeat
+      fixed;
   }
 }
 

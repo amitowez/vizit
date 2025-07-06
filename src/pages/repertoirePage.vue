@@ -9,29 +9,18 @@
         <div class="repertoire__concert-image">
           <img :src="selectedConcert.image" alt="Concert image" />
         </div>
-        <div class="repertoire__description">
-          <h2>{{ selectedConcert.title }}</h2>
+        <div class="repertoire__descr">
+          <span>{{ selectedConcert.title }}</span>
           <p>{{ selectedConcert.description }}</p>
         </div>
       </div>
 
       <div class="repertoire__right">
-        <div class="repertoire__menu">
-          <ul class="repertoire__menu-list">
-            <li
-              v-for="concert in concerts"
-              :key="concert.id"
-              class="repertoire__menu-item"
-              :class="{
-                'repertoire__menu-item--active':
-                  concert.id === selectedConcert.id,
-              }"
-              @click="selectConcert(concert)"
-            >
-              {{ concert.title }}
-            </li>
-          </ul>
-        </div>
+        <CardsMenu
+          :concerts="concerts"
+          :selectedConcertId="selectedConcert.id"
+          @select="selectConcert"
+        />
       </div>
     </div>
   </div>
@@ -39,32 +28,34 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import bg1 from "@/assets/bg1.jpg";
-import musicians from "@/assets/musicians.jpg";
-import cardsharps from "@/assets/cardsharps.jpg";
-import venusHorizontal from "@/assets/venusHorizontal.jpg";
+import CardsMenu from "@/components/CardsMenu.vue";
+
+import bg1 from "@/assets/img/bg1.jpg";
+import musicians from "@/assets/img/musicians.jpg";
+import cardsharps from "@/assets/img/cardsharps.jpg";
+import venusVertical from "@/assets/img/venusVertical.jpg";
 
 const concerts = ref([
   {
     id: 1,
-    title: "Концерт №1",
+    title: "Музыка королей",
     description: "Описание концерта №1",
     background: bg1,
     image: musicians,
   },
   {
     id: 2,
-    title: "Концерт №2",
+    title: "Мадригалы",
     description: "Описание концерта №2",
     background: bg1,
     image: cardsharps,
   },
   {
     id: 3,
-    title: "Концерт №3",
+    title: "Эрос",
     description: "Описание концерта №3",
     background: bg1,
-    image: venusHorizontal,
+    image: venusVertical,
   },
 ]);
 
@@ -81,7 +72,7 @@ function selectConcert(concert) {
 .repertoire {
   position: relative;
   width: 100%;
-  height: calc(100vh - 64px - 64px); // подстрой под свои шапку/футер
+  height: calc(100vh - 64px - 64px);
   overflow: hidden;
 
   &__background {
@@ -93,6 +84,7 @@ function selectConcert(concert) {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: blur(4px);
     }
   }
 
@@ -111,7 +103,8 @@ function selectConcert(concert) {
     width: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
+    align-items: center;
     padding: 40px;
   }
 
@@ -124,41 +117,25 @@ function selectConcert(concert) {
     }
   }
 
-  &__description {
+  &__descr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-top: 20px;
-    background: rgba(0, 0, 0, 0.5);
     padding: 16px;
+
+    font-size: 14px;
     border-radius: 8px;
+    background: rgba(0, 0, 0, 0.5);
   }
 
   &__right {
     width: 40%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 40px;
-  }
-
-  &__menu {
-    &-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    &-item {
-      cursor: pointer;
-      padding: 12px 16px;
-      margin-bottom: 8px;
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: 4px;
-      transition: background 0.2s;
-
-      &--active,
-      &:hover {
-        background: rgba(0, 0, 0, 0.8);
-      }
-    }
   }
 }
 </style>
