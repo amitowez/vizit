@@ -123,7 +123,7 @@ function onSelectConcert(concert) {
       color: #fff;
       text-align: center;
       background: rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.6s ease, opacity 0.3s ease;
     }
 
     &-image {
@@ -133,6 +133,7 @@ function onSelectConcert(concert) {
       object-position: center;
       display: block;
       filter: blur(2px);
+      transition: filter 0.2s;
     }
   }
 
