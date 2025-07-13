@@ -55,8 +55,8 @@
 </template>
 
 <script setup>
-import appBurger from "./header/appBurger.vue";
-import changeTheme from "./header/changeTheme.vue";
+import AppBurger from "./header/AppBurger.vue";
+import ChangeTheme from "./header/ChangeTheme.vue";
 
 const languages = [
   { title: "ру", value: "ru" },
