@@ -9,8 +9,39 @@
         <h1 class="section__title">История ансамбля</h1>
         <div class="section__content">
           <div class="regular-section">
-            <h2>Заголовок 1</h2>
-            <p>Описание...</p>
+            <h2 class="regular-section__title">Заголовок 1</h2>
+            <div class="regular-section__content">
+              <div class="regular-section__content-left">
+                regular-section__content-left
+              </div>
+              <div class="regular-section__content-center">
+                regular-section__content-center
+              </div>
+              <div class="regular-section__content-right">
+                Born in Bilbao, he studied cello, chamber music and conducting
+                at Bachelor and Masters level in Spain and Holland, where he
+                studied baroque cello at the Royal Conservatory of The Hague and
+                was mentored by Anner Bylsma. Josetxu performs on a regular
+                basis at the most prestigious concert halls in 18 different
+                European countries, the United States, Mexico, Chile, Costa
+                Rica, Bolivia, Japan and China; at venues such as the
+                Concertgebouw Amsterdam, Tokyo Opera City, Centro Nacional de
+                las Artes de México, the Royal Festival Hall London. He has
+                played with some of Europe’s most important ensembles, such as
+                the Royal Concertgebouw Orchestra, and in the context of Early
+                Music with Le Concert des Nations (Jordi Savall), Orchestra of
+                the Age of Enlightenment and as first cellist of L’Arpeggiata
+                (Christina Pluhar), EUBO (European Union Baroque Orchestra) and
+                Arte dei Suonatori, among others. He has recorded for Virgin,
+                Verso, Arsis, Columna Música and The Gift of Music record labels
+                and also for BBC3, NPS Radio 3 Holland, Mezzo, the Spanish
+                National Radio and TV and the Macedonian TV, among others.
+                Josetxu plays an original 1740 cello by Sebastian Klotz and
+                recently he had the honor to play at the Palacio Real de Madrid
+                the Stradivarius 1700 that belongs to the Spanish Royal
+                Collection.
+              </div>
+            </div>
           </div>
         </div>
         <button class="section__scroll-btn">↓</button>
@@ -18,20 +49,14 @@
       <div class="home-page__section home-page__section--3 section">
         <h1 class="section__title">Расписание концертов</h1>
         <div class="section__content">
-          <div class="regular-section">
-            <h2>Заголовок 1</h2>
-            <p>Описание...</p>
-          </div>
+          <p>Описание...</p>
         </div>
         <button class="section__scroll-btn">↓</button>
       </div>
       <div class="home-page__section home-page__section--4 section">
         <h1 class="section__title">Наши партнеры</h1>
         <div class="section__content">
-          <div class="regular-section">
-            <h2>Заголовок 1</h2>
-            <p>Описание...</p>
-          </div>
+          <p>Описание...</p>
         </div>
       </div>
     </div>
@@ -128,6 +153,10 @@ onMounted(() => {
   }
 
   &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     z-index: 1;
     width: 100%;
     height: 100%;
@@ -157,6 +186,30 @@ onMounted(() => {
 }
 
 .regular-section {
+  width: 80%;
   padding: 0 100px;
+
+  color: black;
+  background-color: white;
+
+  // &__title {
+
+  // }
+
+  &__content {
+    display: flex;
+
+    &-left,
+    &-center {
+      flex: 0 0 25%;
+    }
+
+    &-right {
+      flex: 0 1 50%;
+
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
 }
 </style>
