@@ -46,7 +46,7 @@ const concerts = ref([
     id: 1,
     title: "Музыка королей",
     description:
-      "Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1",
+      "Dolor sit amet consectetur adipisicing elit. Sint vero suscipit repellendus aliquam. Repudiandae veniam necessitatibus doloribus consequuntur vel? Voluptatem assumenda quam veritatis magni, numquam pariatur eos, eaque hic ad culpa soluta aperiam! Amet sapiente, repellendus reiciendis officiis quae corporis! Voluptate repellendus reprehenderit deleniti illum! Porro minima totam quisquam illum.",
     image: musicians,
     imageMobile: require("@/assets/img/musicians.jpg"),
   },
@@ -54,7 +54,7 @@ const concerts = ref([
     id: 2,
     title: "Мадригалы",
     description:
-      "Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта",
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint vero suscipit repellendus aliquam. Repudiandae veniam necessitatibus doloribus consequuntur vel? Voluptatem assumenda quam veritatis magni, numquam pariatur eos, eaque hic ad culpa soluta aperiam! Amet sapiente, repellendus reiciendis officiis quae corporis! Voluptate repellendus reprehenderit deleniti illum! Porro minima totam quisquam illum.",
     image: cardsharps,
     imageMobile: require("@/assets/img/cardsharps.jpg"),
   },
@@ -62,7 +62,7 @@ const concerts = ref([
     id: 3,
     title: "Эрос",
     description:
-      "Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта",
+      "Sint vero suscipit repellendus aliquam. Repudiandae veniam necessitatibus doloribus consequuntur vel? Voluptatem assumenda quam veritatis magni, numquam pariatur eos, eaque hic ad culpa soluta aperiam! Amet sapiente, repellendus reiciendis officiis quae corporis! Voluptate repellendus reprehenderit deleniti illum! Porro minima totam quisquam illum.",
     image: venusVertical,
     imageMobile: require("@/assets/img/venusVertical.jpg"),
   },
@@ -120,7 +120,7 @@ function selectConcert(concert) {
   &__descr {
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: 80px;
     transform: translateX(-50%);
 
     display: flex;
@@ -142,7 +142,7 @@ function selectConcert(concert) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    padding: 10px 40px 70px;
   }
 }
 </style>
