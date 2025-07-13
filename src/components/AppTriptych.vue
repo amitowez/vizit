@@ -1,7 +1,6 @@
 <template>
-  <div class="repertoire">
-    <div class="repertoire__background">
-      <!-- <img :src="currentBackground" alt="Concert background" /> -->
+  <div class="triptych">
+    <div class="triptych__background">
       <picture>
         <!-- пример: для экранов шириной больше 1200px можно подключить другой фон -->
         <source
@@ -12,13 +11,8 @@
       </picture>
     </div>
 
-    <div class="repertoire__content">
-      <div class="repertoire__left">
-        <!-- <img
-          :src="selectedConcert.image"
-          class="repertoire__concert-image"
-          alt="Concert image"
-        /> -->
+    <div class="triptych__content">
+      <div class="triptych__left">
         <picture>
           <!-- пример: для retina или больших экранов можно подгрузить другое изображение -->
           <source
@@ -27,17 +21,17 @@
           />
           <img
             :src="selectedConcert.image"
-            class="repertoire__concert-image"
+            class="triptych__concert-image"
             alt="Concert image"
           />
         </picture>
-        <div class="repertoire__descr">
+        <div class="triptych__descr">
           <span>{{ selectedConcert.title }}</span>
           <p>{{ selectedConcert.description }}</p>
         </div>
       </div>
 
-      <div class="repertoire__right">
+      <div class="triptych__right">
         <CardsMenu
           :concerts="concerts"
           :selectedConcertId="selectedConcert.id"
@@ -100,10 +94,11 @@ function selectConcert(concert) {
 </script>
 
 <style lang="scss" scoped>
-.repertoire {
+.triptych {
   position: relative;
   width: 100%;
-  height: calc(100vh - 64px - 64px);
+  height: 100%;
+  // height: calc(100vh - 64px - 64px);
   overflow: hidden;
 
   &__background {

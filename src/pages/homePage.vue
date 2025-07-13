@@ -1,59 +1,88 @@
 <template>
   <div class="home-page">
-    <!-- <app-carousel /> -->
-    <div class="section section-1">
-      <div class="content">
-        <h1>Заголовок 1</h1>
-        <p>Описание...</p>
+    <div class="home-page__content">
+      <div class="home-page__regular-section">
+        <app-triptych />
       </div>
-    </div>
-    <div class="section section-2">
-      <div class="content">
-        <h2>Блок контента</h2>
-        <p>Еще текст...</p>
+      <div
+        class="home-page__parallax-section home-page__parallax-section--1 parallax-section"
+      >
+        <div class="parallax-section__title">История ансамбля</div>
+        <div class="parallax-section__content">
+          <h1>Заголовок 1</h1>
+          <p>Описание...</p>
+        </div>
       </div>
-    </div>
-    <div class="section section-3">
-      <div class="content">
-        <h2>И еще один блок</h2>
+      <div
+        class="home-page__parallax-section home-page__parallax-section--2 parallax-section"
+      >
+        <div class="parallax-section__title">parallax-section__title</div>
+        <div class="parallax-section__content">
+          <h2>Блок контента</h2>
+          <p>Еще текст...</p>
+        </div>
+      </div>
+      <div
+        class="home-page__parallax-section home-page__parallax-section--3 parallax-section"
+      >
+        <div class="parallax-section__title">parallax-section__title</div>
+        <div class="parallax-section__content">
+          <h2>И еще один блок</h2>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-// import appCarousel from "@/components/appCarousel.vue";
+import AppTriptych from "@/components/AppTriptych.vue";
 </script>
 
 <style scoped lang="scss">
-.section {
-  min-height: 100vh;
-  width: 100%;
+.home-page {
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &-1 {
-    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
-      fixed;
+  &__regular-section {
+    width: 100%;
+    height: calc(100vh - 64px);
   }
 
-  &-2 {
-    background: url("@/assets/img/bg2.jpg") center center / cover no-repeat
-      fixed;
-  }
+  &__parallax-section {
+    min-height: 100vh;
+    width: 100%;
 
-  &-3 {
-    background: url("@/assets/img/bg3.jpg") center center / cover no-repeat
-      fixed;
+    &--1 {
+      background: url("@/assets/img/bg3.jpg") center center / cover no-repeat
+        fixed;
+    }
+
+    &--2 {
+      background: url("@/assets/img/bg2.jpg") center center / cover no-repeat
+        fixed;
+    }
+
+    &--3 {
+      background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
+        fixed;
+    }
   }
 }
 
-.content {
-  z-index: 1;
-  padding: 2rem;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+.parallax-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    width: 100%;
+    background-color: white;
+    color: #666;
+  }
+
+  &__content {
+    z-index: 1;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+  }
 }
 </style>
