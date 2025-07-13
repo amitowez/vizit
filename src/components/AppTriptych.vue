@@ -1,20 +1,10 @@
 <template>
   <div class="triptych">
-    <div class="triptych__background">
-      <picture>
-        <!-- пример: для экранов шириной больше 1200px можно подключить другой фон -->
-        <source
-          :srcset="selectedConcert.backgroundMobile || currentBackground"
-          media="(max-width: 500px)"
-        />
-        <img :src="currentBackground" alt="Concert background" />
-      </picture>
-    </div>
+    <div class="triptych__background"></div>
 
     <div class="triptych__content">
       <div class="triptych__left">
         <picture>
-          <!-- пример: для retina или больших экранов можно подгрузить другое изображение -->
           <source
             :srcset="selectedConcert.imageMobile || selectedConcert.image"
             media="(max-width: 500px)"
@@ -43,10 +33,10 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import CardsMenu from "@/components/CardsMenu.vue";
 
-import bg1 from "@/assets/img/bg1.jpg";
+// import bg1 from "@/assets/img/bg1.jpg";
 import musicians from "@/assets/img/musicians.jpg";
 import cardsharps from "@/assets/img/cardsharps.jpg";
 import venusVertical from "@/assets/img/venusVertical.jpg";
@@ -57,8 +47,6 @@ const concerts = ref([
     title: "Музыка королей",
     description:
       "Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1Описание концерта №1",
-    background: bg1,
-    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: musicians,
     imageMobile: require("@/assets/img/musicians.jpg"),
   },
@@ -67,8 +55,6 @@ const concerts = ref([
     title: "Мадригалы",
     description:
       "Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта №2Описание концерта",
-    background: bg1,
-    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: cardsharps,
     imageMobile: require("@/assets/img/cardsharps.jpg"),
   },
@@ -77,16 +63,12 @@ const concerts = ref([
     title: "Эрос",
     description:
       "Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта №3Описание концерта",
-    background: bg1,
-    backgroundMobile: require("@/assets/img/bg1.jpg"),
     image: venusVertical,
     imageMobile: require("@/assets/img/venusVertical.jpg"),
   },
 ]);
 
 const selectedConcert = ref(concerts.value[0]);
-
-const currentBackground = computed(() => selectedConcert.value.background);
 
 function selectConcert(concert) {
   selectedConcert.value = concert;
@@ -105,13 +87,7 @@ function selectConcert(concert) {
     position: absolute;
     inset: 0;
     z-index: 1;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(4px);
-    }
+    // filter: blur(4px);
   }
 
   &__content {
