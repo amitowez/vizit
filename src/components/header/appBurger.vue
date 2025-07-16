@@ -41,7 +41,7 @@
 
 <script setup>
 import { defineProps } from "vue";
-import ChangeTheme from "./ChangeTheme.vue";
+import ChangeTheme from "@/components/header/changeTheme.vue";
 defineProps({
   languages: Array,
   navigation: Array,

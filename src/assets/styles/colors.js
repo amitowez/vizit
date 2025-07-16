@@ -5,9 +5,11 @@ function kebabize(str) {
 const colors = {
   activeLang: ["#ffff00", "#007bff"],
   textHeader: ["#ffff00", "#007bff"],
-  textParagraph: ["#ffff00", "#007bff"],
+  textParagraph: ["#FFFFFF", "#000000"],
   textSpan: ["#ffff00", "#007bff"],
   themeIcon: ["#ffff00", "#007bff"],
+  textBlockBackground: ["#000000", "#FFFFFF"],
+  textBlockBackgroundAccent: ["#FFFFFF", "#000000"],
 };
 
 const dark = {};

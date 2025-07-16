@@ -2,3 +2,137 @@
 @import "./themes/dark";
 @import "./variables";
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Gothic&display=swap");
+
+.paralax-section {
+  &--1 {
+    position: relative;
+    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
+      fixed;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      filter: blur(4px);
+      z-index: 0;
+    }
+  }
+
+  &--2 {
+    position: relative;
+    background: url("@/assets/img/bg2.jpg") center center / cover no-repeat
+      fixed;
+  }
+
+  &--3 {
+    position: relative;
+    background: url("@/assets/img/bg3.jpg") center center / cover no-repeat
+      fixed;
+  }
+
+  &--4 {
+    position: relative;
+    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
+      fixed;
+  }
+}
+
+.scroll-btn {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+  @media (max-width: 500px) {
+    display: none;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    height: 64px;
+    width: 100%;
+    padding: 0 100px;
+
+    font-size: 22px;
+    color: #666;
+    background-color: white;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.animate-container {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.6s ease-out;
+
+  &:nth-child(even) {
+    transform: translateX(100%);
+  }
+
+  &.animate {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 500px) {
+    transform: translateY(-100%);
+
+    &:nth-child(even) {
+      transform: translateY(100%);
+    }
+
+    &.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &.anim-1.animate {
+    transition-delay: 0s;
+  }
+
+  &.anim-2.animate {
+    transition-delay: 0.2s;
+  }
+
+  &.anim-3.animate {
+    transition-delay: 0.4s;
+  }
+
+  &.anim-4.animate {
+    transition-delay: 0.6s;
+  }
+}
