@@ -56,7 +56,8 @@ const scroll = useScrollBtn();
 
   &__section {
     width: 100%;
-    height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px);
+    height: calc(fit-content - 64px);
   }
 }
 
