@@ -3,9 +3,7 @@
     <!-- Семантический хедер -->
     <header>
       <v-app-bar app>
-        <v-toolbar-title @click="$router.push('/repertoire')">{{
-          $t("appTitle")
-        }}</v-toolbar-title>
+        <v-toolbar-title>{{ $t("appTitle") }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <div class="header-nav">
           <router-link
@@ -55,8 +53,8 @@
 </template>
 
 <script setup>
-import appBurger from "./header/appBurger.vue";
-import changeTheme from "./header/changeTheme.vue";
+import AppBurger from "@/components/header/appBurger.vue";
+import ChangeTheme from "@/components/header/changeTheme.vue";
 
 const languages = [
   { title: "ру", value: "ru" },

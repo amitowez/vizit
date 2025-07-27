@@ -10,10 +10,16 @@ import * as directives from "vuetify/directives";
 import getColors from "./assets/styles/colors";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faSun, faMoon, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSun,
+  faMoon,
+  faBars,
+  faChevronCircleLeft,
+  faChevronCircleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const darkThemePreferred = window.matchMedia("(prefers-color-scheme: dark)");
-library.add(faSun, faMoon, faBars);
+library.add(faSun, faMoon, faBars, faChevronCircleLeft, faChevronCircleRight);
 const vuetify = createVuetify({
   components,
   directives,
@@ -42,11 +48,13 @@ const vuetify = createVuetify({
   },
   icons: {
     defaultSet: "fa",
-    aliases: {
-      sun: "fa-sun",
-      moon: "fa-moon",
-      bars: "fa-bars",
-    },
+    // aliases: {
+    //   sun: "fa-sun",
+    //   moon: "fa-moon",
+    //   bars: "fa-bars",
+    //   prev: "fa-chevron-circle-left",
+    //   next: "fa-chevron-circle-right",
+    // },
     sets: {
       fa: {
         component: FontAwesomeIcon,

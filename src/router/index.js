@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import homePage from "@/pages/homePage.vue";
+import aboutPage from "@/pages/aboutPage.vue";
 import repertoirePage from "@/pages/repertoirePage.vue";
+import contactPage from "@/pages/contactPage.vue";
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: homePage,
+    path: "/about",
+    name: "about",
+    component: aboutPage,
   },
   {
     path: "/repertoire",
@@ -13,8 +14,13 @@ const routes = [
     component: repertoirePage,
   },
   {
+    path: "/contact",
+    name: "contact",
+    component: contactPage,
+  },
+  {
     path: "/:pathMatch(.*)*",
-    redirect: "/",
+    redirect: "/about",
   },
 ];
 
