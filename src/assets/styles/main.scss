@@ -136,3 +136,11 @@
     transition-delay: 0.6s;
   }
 }
+.carousel-btn {
+  background-color: rgb(var(--v-theme-text-block-background), 20%) !important;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: rgb(var(--v-theme-text-block-background-accent)) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}

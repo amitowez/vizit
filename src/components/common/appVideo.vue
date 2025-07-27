@@ -19,7 +19,6 @@ const embedUrl = computed(() => {
   }
   return "";
 });
-console.log(embedUrl);
 </script>
 
 <template>

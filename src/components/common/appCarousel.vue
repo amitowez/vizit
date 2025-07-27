@@ -4,7 +4,7 @@
     hide-delimiters
     :show-arrows="true"
     cycle
-    :interval="3000"
+    :interval="4000"
   >
     <v-carousel-item
       v-for="item in images"
@@ -13,18 +13,16 @@
       cover
     >
       <template v-slot:default>
-        <div class="caption">
+        <div class="carousel-caption">
           {{ $t(item.caption) }}
         </div>
       </template>
     </v-carousel-item>
 
-    <!-- Кастомные кнопки -->
     <template v-slot:prev="{ props }">
       <v-btn
         class="carousel-btn"
         icon="fa-chevron-circle-left"
-        color="primary"
         @click="props.onClick"
       />
     </template>
@@ -32,7 +30,6 @@
       <v-btn
         class="carousel-btn"
         icon="fa-chevron-circle-right"
-        color="primary"
         @click="props.onClick"
       />
     </template>
@@ -51,8 +48,8 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped>
-.caption {
+<style lang="scss">
+.carousel-caption {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -61,14 +58,5 @@ defineProps({
   text-align: center;
   padding: 10px;
   font-size: 16px;
-}
-
-.carousel-btn {
-  background-color: rgb(var(--v-theme-text-block-background), 0%) !important;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: rgb(var(--v-theme-text-block-background-accent)) !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 </style>

@@ -28,11 +28,11 @@ const { setAnimElement } = useAnim({
 });
 
 const videos = [
-  "https://rutube.ru/video/75549b09b9a1dd7b9aae41f37a3eeac2/?r=a",
-  "https://rutube.ru/video/2ad8855a7cedc6443ab22829c00f7336/?r=a",
-  "https://rutube.ru/video/a1e76dd8e60cd3d737d8b7bf954e0d6c/?r=a",
-  "https://rutube.ru/video/0d1b9f55c428db58a6fe25fa415ccc5f/?r=a",
-  "https://rutube.ru/video/0b1de8e4b3cdb7a1f0d0c7a13ef5b3a9/?r=a",
+  "https://rutube.ru/video/75549b09b9a1dd7b9aae41f37a3eeac2/",
+  "https://rutube.ru/video/2ad8855a7cedc6443ab22829c00f7336/",
+  "https://rutube.ru/video/a1e76dd8e60cd3d737d8b7bf954e0d6c/",
+  "https://rutube.ru/video/0d1b9f55c428db58a6fe25fa415ccc5f/",
+  "https://rutube.ru/video/0b1de8e4b3cdb7a1f0d0c7a13ef5b3a9/",
 ];
 </script>
 <style lang="scss">
