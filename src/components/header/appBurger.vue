@@ -55,7 +55,13 @@ defineProps({
   background: none;
   outline: none;
   transition: none;
-  font-size: 30px;
-  font-family: "Playfair Display", sans-serif;
+  padding: 6px 0;
+  font-size: 24px;
+  letter-spacing: 0.08em;
+  font-family: "Forum", "Georgia", serif;
+
+  &.router-link-active {
+    color: rgb(var(--v-theme-active-lang));
+  }
 }
 </style>

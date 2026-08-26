@@ -53,10 +53,13 @@ defineProps({
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
+  background: rgba(var(--v-theme-shade), 0.72);
+  border-top: 1px solid rgba(var(--v-theme-gold), 0.55);
+  color: #f0e6cc;
+  font-family: "Forum", "Georgia", serif;
+  letter-spacing: 0.06em;
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
 }
 </style>

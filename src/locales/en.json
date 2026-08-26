@@ -3,5 +3,24 @@
   "toggleTheme": "Toggle to {theme} theme",
   "light": "light",
   "dark": "dark",
-  "appTitle": "teeeeeeesrt"
+  "appTitle": "Monte Verde",
+  "about": "About",
+  "repertoire": "Concerts",
+  "contact": "Contacts",
+  "footerText": "Monte Verde early music ensemble — the music of kings, performed for you",
+  "repertoireTitle": "Repertoire",
+  "piano": {
+    "lead": "Touch the epoch",
+    "title": "Harpsichord",
+    "hint": "Tap the keys — or play with your computer keyboard",
+    "titleEros": "Harpsichord of passion",
+    "hintEros": "Touch gently — the strings will tremble in reply…"
+  },
+  "albums": {
+    "title": "Our albums",
+    "listen": "Listen on Yandex Music",
+    "first": "Album I",
+    "second": "Album II"
+  },
+  "erosOn": "The boudoir is open… Alt+Enter to return"
 }

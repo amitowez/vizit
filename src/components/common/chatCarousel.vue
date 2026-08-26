@@ -14,7 +14,7 @@
             :key="item.question"
             :header="item.question"
             :text="item.answer"
-            style="margin: 30px"
+            class="chat-card"
           />
         </div>
       </template>
@@ -82,23 +82,35 @@ onUnmounted(() => {
 </script>
 
 <style>
-.carousel-btn {
-  background-color: rgba(0, 0, 0, 0.5) !important;
-  border-radius: 50%;
-}
 .v-responsive__content {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
 }
 .carousel-item-content {
-  margin: 0 100px;
+  margin: 0 72px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: stretch;
   height: fit-content;
   width: fit-content;
+}
+.chat-card {
+  margin: 24px;
+}
+@media (max-width: 960px) {
+  .carousel-item-content {
+    margin: 0 56px;
+  }
+}
+@media (max-width: 600px) {
+  .carousel-item-content {
+    margin: 0 8px;
+  }
+  .chat-card {
+    margin: 12px 6px;
+  }
 }
 
 .v-carousel {

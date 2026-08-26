@@ -7,8 +7,6 @@ export function useScrollBtn() {
   onMounted(() => {
     const buttons = document.querySelectorAll(".scroll-btn");
     const sections = document.querySelectorAll("section");
-    const viewport =
-      document.querySelector(".viewport-container") || document.documentElement;
 
     if (!sections.length || !buttons.length) {
       return;
@@ -32,10 +30,11 @@ export function useScrollBtn() {
       });
     });
 
+    // Порог 0.3: секции могут быть выше экрана, и 40% видимости недостижимы
     const observerOptions = {
       root: null,
       rootMargin: "0px 0px 0px 0px",
-      threshold: 0.4,
+      threshold: 0.3,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -44,9 +43,7 @@ export function useScrollBtn() {
           const index = Array.from(sections).indexOf(entry.target);
           if (index !== -1) {
             currentSectionIndex.value = index;
-            const sectionHeight = entry.target.offsetHeight;
-            viewport.style.height = `${sectionHeight}px`;
-            viewportHeight.value = `${sectionHeight}px`;
+            viewportHeight.value = `${entry.target.offsetHeight}px`;
           }
         }
       });
@@ -58,7 +55,6 @@ export function useScrollBtn() {
 
     onUnmounted(() => {
       sections.forEach((section) => observer.unobserve(section));
-      viewport.style.height = "100vh";
     });
   });
 

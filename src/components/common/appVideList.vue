@@ -42,11 +42,19 @@ defineProps({
       }
     }
 
+    // Мобильный: горизонтальная лента, чтобы секция не растягивалась в колонну
     @media (max-width: 500px) {
-      grid-template-columns: 1fr;
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 8px;
+      scroll-snap-type: x proximity;
+      -webkit-overflow-scrolling: touch;
 
       .video-player {
+        flex: 0 0 82vw;
         height: 200px;
+        scroll-snap-align: start;
       }
     }
   }
