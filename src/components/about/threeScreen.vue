@@ -49,14 +49,20 @@ const images = [
 .three-screen {
   display: flex;
   align-items: center;
-  height: 100%;
   padding: 50px;
+  @media (max-width: 500px) {
+    padding: 20px 15px 40px;
+  }
   &__carousel {
     width: 50%;
-    height: 100%;
+    // Явная высота вместо процентной: секция теперь может растягиваться
+    height: calc(100vh - 64px - 130px);
+    min-height: 320px;
     padding: 15px;
     @media (max-width: 500px) {
       width: 100%;
+      height: calc(100vh - 64px - 110px);
+      padding: 0;
     }
   }
   &__text {

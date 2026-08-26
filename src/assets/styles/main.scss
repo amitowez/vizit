@@ -1,84 +1,175 @@
-@import "./themes/light";
-@import "./themes/dark";
 @import "./variables";
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Special+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap");
 
-.paralax-section {
-  &--1 {
-    position: relative;
-    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
-      fixed;
+/* ── Основа ─────────────────────────────────────────────── */
 
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: inherit;
-      filter: blur(4px);
-      z-index: 0;
-    }
-  }
+body {
+  font-family: "Alegreya", "Georgia", serif;
+  background-color: rgb(var(--v-theme-background));
+  color: rgb(var(--v-theme-on-background));
+}
 
-  &--2 {
-    position: relative;
-    background: url("@/assets/img/bg2.jpg") center center / cover no-repeat
-      fixed;
-  }
+::selection {
+  background: rgba(var(--v-theme-gold), 0.35);
+}
 
-  &--3 {
-    position: relative;
-    background: url("@/assets/img/bg3.jpg") center center / cover no-repeat
-      fixed;
-  }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--v-theme-background));
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    rgba(var(--v-theme-gold), 0.85),
+    rgba(var(--v-theme-frame), 0.85)
+  );
+  border-radius: 5px;
+  border: 2px solid rgb(var(--v-theme-background));
+}
 
-  &--4 {
-    position: relative;
-    background: url("@/assets/img/bg1.jpg") center center / cover no-repeat
-      fixed;
+/* ── Параллакс-секции с тонировкой под тему ─────────────── */
+
+@mixin parallax($img, $pos: center center) {
+  position: relative;
+  background: linear-gradient(
+      rgba(var(--v-theme-shade), 0.5),
+      rgba(var(--v-theme-shade), 0.62)
+    ),
+    url($img) $pos / cover no-repeat fixed;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      rgba(var(--v-theme-shade), 0.55) 100%
+    );
+    z-index: 0;
   }
 }
 
+.paralax-section {
+  &--1 {
+    @include parallax("@/assets/img/bg1.jpg");
+  }
+
+  &--2 {
+    @include parallax("@/assets/img/bg2.jpg");
+  }
+
+  &--3 {
+    @include parallax("@/assets/img/bg3.jpg");
+  }
+
+  &--4 {
+    @include parallax("@/assets/img/bg2.jpg", center 70%);
+  }
+}
+
+.paralax-section__about {
+  &--1 {
+    @include parallax("@/assets/img/aboutPeople/all-concert.webp");
+  }
+
+  &--2 {
+    @include parallax("@/assets/img/aboutPeople/all-pafos.webp");
+  }
+
+  &--3 {
+    @include parallax("@/assets/img/aboutPeople/all-scene.webp");
+  }
+
+  &--4 {
+    @include parallax("@/assets/img/aboutPeople/all.webp");
+  }
+}
+
+/* ── Кнопка прокрутки — золотой медальон ────────────────── */
+
 .scroll-btn {
   position: absolute;
-  z-index: 2;
-  bottom: 20px;
+  z-index: 3;
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  transform: translate(-50%, 0);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  font-size: 24px;
-  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(var(--v-theme-gold), 0.85);
+  box-shadow: 0 0 0 4px rgba(var(--v-theme-gold), 0.15),
+    0 2px 10px rgba(0, 0, 0, 0.35);
+  color: rgb(var(--v-theme-gold));
+  background: rgba(var(--v-theme-shade), 0.35);
+  backdrop-filter: blur(3px);
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, color 0.3s;
+  animation: scroll-pulse 2.6s ease-in-out infinite;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgb(var(--v-theme-gold));
+    color: rgb(var(--v-theme-shade));
   }
+
   @media (max-width: 500px) {
     display: none;
   }
 }
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 6px);
+  }
+}
+
+/* ── Орнаментальный разделитель ─────────────────────────── */
+
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: rgb(var(--v-theme-gold));
+
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+  }
+
+  &::before {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--v-theme-gold), 0.7)
+    );
+  }
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--v-theme-gold), 0.7),
+      transparent
+    );
+  }
+}
+
+/* ── Секции ─────────────────────────────────────────────── */
 
 .section {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-
-  &__title {
-    display: flex;
-    align-items: center;
-
-    height: 64px;
-    width: 100%;
-    padding: 0 100px;
-
-    font-size: 22px;
-    color: #666;
-    background-color: white;
-  }
 
   &__content {
     display: flex;
@@ -88,10 +179,10 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-
-    background-color: rgba(0, 0, 0, 0.6);
   }
 }
+
+/* ── Анимация появления блоков ──────────────────────────── */
 
 .animate-container {
   opacity: 0;
@@ -136,11 +227,207 @@
     transition-delay: 0.6s;
   }
 }
+
+/* ── Кнопки каруселей ───────────────────────────────────── */
+
 .carousel-btn {
-  background-color: rgb(var(--v-theme-text-block-background), 20%) !important;
+  background: rgba(var(--v-theme-shade), 0.5) !important;
+  border: 1px solid rgba(var(--v-theme-gold), 0.7);
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: rgb(var(--v-theme-text-block-background-accent)) !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 44px;
+  height: 44px;
+  color: rgb(var(--v-theme-gold)) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Переходы ───────────────────────────────────────────── */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.6s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* ── Пасхалка: будуар (Alt+Enter) ───────────────────────── */
+
+.eros-toast {
+  position: fixed;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  padding: 10px 26px;
+  font-family: "Forum", serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: #f4dfe3;
+  background: rgba(43, 7, 22, 0.9);
+  border: 1px solid rgba(224, 85, 125, 0.7);
+  border-radius: 999px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2500;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -6%;
+  animation: petal-fall linear infinite;
+  opacity: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(-8vh) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(116vh) rotate(320deg);
+    opacity: 0.1;
+  }
+}
+
+// Тонировка будуарных фонов
+@mixin eros-parallax($img, $pos: center center) {
+  background: linear-gradient(rgba(43, 7, 22, 0.5), rgba(43, 7, 22, 0.68)),
+    url($img) $pos / cover no-repeat fixed;
+}
+
+body.eros-mode {
+  // Галерея классических ню: каждая секция — своя картина
+  .paralax-section--1 {
+    @include eros-parallax("@/assets/img/venusVertical.jpg", center 22%);
+  }
+
+  .paralax-section__about--1 {
+    @include eros-parallax("@/assets/img/eros/cabanel-venus.jpg", center 35%);
+  }
+
+  .paralax-section--2 {
+    @include eros-parallax("@/assets/img/eros/velazquez-venus.jpg", center 30%);
+  }
+
+  .paralax-section__about--2 {
+    @include eros-parallax("@/assets/img/eros/goya-maja.jpg", center 35%);
+  }
+
+  .paralax-section--3 {
+    @include eros-parallax("@/assets/img/eros/bouguereau-venus.jpg", center 18%);
+  }
+
+  .paralax-section__about--3 {
+    @include eros-parallax("@/assets/img/eros/boucher-omurphy.jpg", center 40%);
+  }
+
+  .paralax-section__about--4 {
+    @include eros-parallax("@/assets/img/eros/cabanel-venus.jpg", center 45%);
+  }
+
+  .paralax-section--4 {
+    @include eros-parallax("@/assets/img/venusVertical.jpg", center 22%);
+  }
+
+  // Лейбл винила в будуаре — розовая печать
+  .album-card__label {
+    background: radial-gradient(circle, #e08bab, #b04a72 72%, #8e3a5c);
+    border-color: #6e2242;
+    color: #26050f;
+  }
+
+  // Будуарная отделка интерфейса
+  .mv-appbar {
+    border-bottom-color: rgba(224, 85, 125, 0.6) !important;
+    box-shadow: 0 3px 0 -2px rgba(224, 85, 125, 0.35) !important;
+  }
+
+  .text-block {
+    border-color: rgba(224, 85, 125, 0.55);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28),
+      0 0 34px rgba(224, 85, 125, 0.12);
+
+    &::before {
+      border-color: rgba(224, 85, 125, 0.3);
+    }
+  }
+
+  .carousel-caption {
+    border-top-color: rgba(224, 85, 125, 0.55);
+  }
+
+  .triptych__plaque {
+    background: linear-gradient(180deg, #e08bab, #b04a72 60%, #8e3a5c);
+    border-color: #6e2242;
+    color: #26050f;
+  }
+
+  .scroll-btn {
+    border-color: rgba(var(--v-theme-rubric), 0.85);
+    // Символ ↓ прячем, вместо него картинка: src/assets/img/eros/arrow-down.png
+    color: transparent;
+    background-image: url("@/assets/img/eros/arrow-down.png");
+    background-size: 55% 55%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 4px rgba(var(--v-theme-rubric), 0.15),
+      0 2px 10px rgba(0, 0, 0, 0.35);
+
+    &:hover {
+      // background-color, а не background: шорткат стёр бы картинку
+      background-color: rgb(var(--v-theme-rubric));
+      color: transparent;
+    }
+  }
+
+  // Клавесин в будуаре: винный бархат вместо дуба
+  .clavier__case {
+    background: linear-gradient(180deg, #5a1230 0%, #3c0a20 55%, #260614 100%);
+    border-color: rgba(224, 85, 125, 0.75);
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 4px rgba(224, 85, 125, 0.3), 0 18px 40px rgba(0, 0, 0, 0.55),
+      0 0 60px rgba(224, 85, 125, 0.12);
+  }
+
+  .clavier__nameplate {
+    color: #e87ba0;
+  }
+
+  .clavier__felt {
+    background: linear-gradient(90deg, #7e2447, #c2547e, #7e2447);
+  }
+
+  .clavier__key--natural {
+    background: linear-gradient(180deg, #2a0b18 0%, #451226 70%, #1d0710 100%);
+    border-color: #14040c;
+  }
+
+  .clavier__key--sharp {
+    background: linear-gradient(180deg, #f9dbe4 0%, #e8b7c6 85%, #ce93a8 100%);
+    border-color: #8d4961;
+  }
+
+  .clavier__label {
+    color: rgba(232, 123, 160, 0.85);
+  }
+
+  .cards-menu__item--active::before {
+    content: "❥";
+  }
+
+  .text-block:has(.text-block__text) .text-block__header::after {
+    content: "❥";
+  }
 }

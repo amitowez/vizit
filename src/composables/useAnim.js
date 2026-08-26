@@ -12,19 +12,12 @@ export function useAnim(params) {
     params.currentSectionIndex,
     async (newVal) => {
       await nextTick();
+      // Появившись один раз, блоки остаются видимыми — класс не снимаем
       if (params.sectionIndex === newVal) {
         animElements.value.forEach((el, index) => {
           if (el) {
             setTimeout(() => {
               el.classList.add("animate");
-            }, index * 200);
-          }
-        });
-      } else {
-        animElements.value.forEach((el, index) => {
-          if (el) {
-            setTimeout(() => {
-              el.classList.remove("animate");
             }, index * 200);
           }
         });

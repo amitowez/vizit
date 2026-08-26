@@ -34,6 +34,10 @@ const vuetify = createVuetify({
         dark: true,
         colors: getColors("dark"),
       },
+      eros: {
+        dark: true,
+        colors: getColors("eros"),
+      },
     },
   },
   display: {

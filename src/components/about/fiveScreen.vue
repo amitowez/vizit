@@ -3,7 +3,9 @@
     <div class="animate-container anim-1" :ref="(el) => setAnimElement(el, 0)">
       <appTextBlock :header="$t('aboutText.hello9')" />
     </div>
-    <chatCarousel :chats="chats" />
+    <div class="five-about__carousel">
+      <chatCarousel :chats="chats" />
+    </div>
   </div>
 </template>
 <script setup>
@@ -103,11 +105,26 @@ const chats = [
 
 <style lang="scss">
 .five-about {
-  padding: 50px;
-  height: 93vh;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 50px 70px;
+
+  &__carousel {
+    // Явная высота: v-carousel внутри рассчитывает проценты от неё
+    height: calc(100vh - 64px - 220px);
+    min-height: 320px;
+  }
+
   @media (max-width: 500px) {
-    padding: 15px;
-    height: 93vh;
+    padding: 15px 15px 40px;
+    gap: 12px;
+
+    &__carousel {
+      height: calc(100vh - 64px - 160px);
+    }
   }
 }
 </style>
